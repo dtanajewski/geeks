@@ -4,7 +4,7 @@ class PeselValidate:
     def __init__(self, str1):
         self.PESEL=str1
 
-    def display_info(self):
+    def validate(self):
         PESEL_list=[]
         for i in str(self.PESEL):
             PESEL_list.append(int(i))
@@ -15,11 +15,10 @@ class PeselValidate:
             control_number=0
         else:
             control_number=10-r
-        if control_number==PESEL_list[10]:
-            return 'PESEL prawidlowy'
-        else:
-            return 'PESEL nieprawidlowy'
+        
+        return control_number==PESEL_list[10]
+
 
 PESEL_input=input("Podaj nr PESEL: ")
 p1=PeselValidate(PESEL_input)
-print(p1.display_info())
+print(p1.validate())
