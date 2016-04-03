@@ -2,10 +2,6 @@ package watki;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Darek
- */
 class input { //klasa odpowiadająca za wczytanie danych
 
     String pierwszeSlowo() { //metoda - wczytanie słowa 1
@@ -33,10 +29,10 @@ class Mix extends Thread {
         try {
             for(int i = 0; i<tablica.length; i++) {
                 Watki.wynik = Watki.wynik+tablica[i];
-                sleep(1);
+                sleep(1000);
             }               
         } catch (InterruptedException e) {
-        System.out.println("Blad: \n" + e);
+        System.out.println("Blad: "+'\n' + e);
         }
     }
 }
@@ -44,25 +40,20 @@ public class Watki {
     
     public static String wynik;
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Watki.wynik="";
         input dane=new input();
         char[] tabela1 = dane.pierwszeSlowo().toCharArray(); //zamiana slowa 1 na tablice ze znakami
         char[] tabela2 = dane.drugieSlowo().toCharArray(); //zamiana slowa 2 na tablice ze znakami
-        new Mix(tabela2); //uruchomienie watku 
-        
+        Mix w1 = new Mix(tabela1);
+        Mix w2 = new Mix(tabela2);        
         try {
-            for(int j = 0; j<tabela1.length; j++) {
-                Watki.wynik = Watki.wynik+tabela1[j];
-                Thread.sleep(1);
-            }
+            w1.join();
+            w2.join();
         } catch (InterruptedException e) {
-            System.out.println("Blad: \n" + e);
+            System.out.println("Blad: "+'\n' + e);
         }
-        System.out.println("Wynik: "+wynik);
+    System.out.println("Wynik: "+wynik);
     }
     
 }
