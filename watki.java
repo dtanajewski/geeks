@@ -17,7 +17,7 @@ class input { //klasa odpowiadająca za wczytanie danych
 }
 
 class Mix extends Thread {
-    char[] tablica;   //zmienna do ktorej zapisany zostanie drugi wyraz
+    char[] tablica;   //zmienna do ktorej zapisany zostanie  wyraz
             
     Mix (char[] tablica) {
         super("Mix");
@@ -29,7 +29,7 @@ class Mix extends Thread {
         try {
             for(int i = 0; i<tablica.length; i++) {
                 Watki.wynik = Watki.wynik+tablica[i];
-                sleep(1000);
+                sleep(100);
             }               
         } catch (InterruptedException e) {
         System.out.println("Blad: "+'\n' + e);
